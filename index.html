@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pei | Personal Profile</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+        :root {
+            --main: #b9a9c3;
+            --light: #eee8f0;
+            --dark: #62546d;
+            --background: #f8f5f8;
+            --white: #ffffff;
+            --text: #554b5b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: 'Noto Sans TC', sans-serif;
+            line-height: 1.8;
+        }
+
+        /* 導覽列 */
+
+        header {
+            width: 100%;
+            padding: 18px 10%;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(80, 60, 90, 0.06);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #a18bac;
+        }
+
+        /* 首頁 */
+
+        section {
+            padding: 90px 12%;
+            scroll-margin-top: 70px;
+        }
+
+        .home {
+            min-height: 650px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .home-text {
+            flex: 1;
+        }
+
+        .small-title {
+            color: #9c8ba6;
+            letter-spacing: 3px;
+            font-size: 13px;
+        }
+
+        .home h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 90px;
+            color: var(--dark);
+            line-height: 1.3;
+        }
+
+        .home h2 {
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .home p {
+            color: #887b8e;
+            font-size: 15px;
+        }
+
+        .home-image {
+            width: 300px;
+            height: 370px;
+            background: var(--light);
+            border-radius: 150px 150px 15px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+            color: #a18bac;
+            font-size: 65px;
+        }
+
+        /* 個人資料 */
+
+        .info {
+            margin-top: 35px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .info-item {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+        }
+
+        .info-item span {
+            display: block;
+            color: #a18bac;
+            font-size: 12px;
+        }
+
+        .info-item p {
+            color: var(--text);
+            font-size: 15px;
+        }
+
+        /* 區塊標題 */
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: var(--dark);
+        }
+
+        .section-title p {
+            color: #a18bac;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        /* 興趣 */
+
+        #about {
+            background: var(--light);
+        }
+
+        .hobby-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .hobby-card {
+            background: white;
+            padding: 30px 18px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .hobby-card .icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .hobby-card h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .hobby-card p {
+            color: #8b7e91;
+            font-size: 13px;
+        }
+
+        /* 學校 */
+
+        .school-box {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 22px;
+        }
+
+        .school-box h3 {
+            color: var(--dark);
+            font-size: 23px;
+            margin-bottom: 15px;
+        }
+
+        .school-box p {
+            color: #837789;
+            font-size: 14px;
+        }
+
+        .tags {
+            margin-top: 18px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--light);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin: 4px;
+        }
+
+        /* 聯絡資訊 */
+
+        #contact {
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 550px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .contact-box p {
+            margin: 15px 0;
+            color: #82758a;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+        }
+
+        /* 手機版 */
+
+        @media (max-width: 768px) {
+
+            header {
+                padding: 15px 5%;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav {
+                gap: 17px;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
+            section {
+                padding: 60px 7%;
+            }
+
+            .home {
+                flex-direction: column-reverse;
+                text-align: center;
+                min-height: auto;
+            }
+
+            .home h1 {
+                font-size: 65px;
+            }
+
+            .home-image {
+                width: 230px;
+                height: 270px;
+            }
+
+            .info {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hobby-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-title h2 {
+                font-size: 34px;
+            }
+
+            .school-box {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            nav {
+                gap: 10px;
+            }
+
+            .info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 導覽列 -->
+
+    <header>
+        <div class="logo">Pei.</div>
+
+        <nav>
+            <a href="#home">首頁</a>
+            <a href="#about">興趣介紹</a>
+            <a href="#school">我的學校</a>
+            <a href="#contact">聯絡資訊</a>
+        </nav>
+    </header>
+
+
+    <!-- 首頁 -->
+
+    <section class="home" id="home">
+
+        <div class="home-text">
+
+            <div class="small-title">WELCOME TO MY WEBSITE</div>
+
+            <h1>Hello,<br>I'm Pei.</h1>
+
+            <h2>你好 很高興認識你</h2>
+
+            <p>
+                喜歡畫畫和音樂的人<br>
+                這裡有我的基本資料、興趣與學習生活
+            </p>
+
+            <div class="info">
+
+                <div class="info-item">
+                    <span>名字 NAME</span>
+                    <p>Pei</p>
+                </div>
+
+                <div class="info-item">
+                    <span>性別 GENDER</span>
+                    <p>女</p>
+                </div>
+
+                <div class="info-item">
+                    <span>大學 UNIVERSITY</span>
+                    <p>台南應用科技大學</p>
+                </div>
+
+                <div class="info-item">
+                    <span>科系 DEPARTMENT</span>
+                    <p>多媒體動畫系</p>
+                </div>
+
+                <div class="info-item">
+                    <span>年級 GRADE</span>
+                    <p>三年級</p>
+                </div>
+
+                <div class="info-item">
+                    <span>生日 BIRTHDAY</span>
+                    <p>2006 / 04 / 14</p>
+                </div>
+
+                <div class="info-item">
+                    <span>星座 ZODIAC</span>
+                    <p>牡羊座 ♈</p>
+                </div>
+
+                <div class="info-item">
+                    <span>MBTI</span>
+                    <p>ESFP</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="home-image">
+            PEI
+        </div>
+
+    </section>
+
+
+    <!-- 興趣介紹 -->
+
+    <section id="about">
+
+        <div class="section-title">
+            <h2>關於我 About Me</h2>
+            <p>MY HOBBIES & INTERESTS</p>
+        </div>
+
+        <div class="hobby-grid">
+
+            <div class="hobby-card">
+                <div class="icon">🎨</div>
+                <h3>畫圖</h3>
+                <p>
+                    喜歡透過畫畫發揮創意，
+                    將自己的想像變成作品。
+                </p>
+            </div>
+
+            <div class="hobby-card">
+                <div class="icon">🎬</div>
+                <h3>看動漫</h3>
+                <p>
+                    喜歡不同類型的動漫，
+                    欣賞角色與故事的魅力。
+                </p>
+            </div>
+
+            <div class="hobby-card">
+                <div class="icon">🎧</div>
+                <h3>聽音樂</h3>
+                <p>
+                    喜歡 K-pop、西洋音樂和 J-pop，
+                    享受不同音樂帶來的感受。
+                </p>
+            </div>
+
+            <div class="hobby-card">
+                <div class="icon">💃</div>
+                <h3>跳舞</h3>
+                <p>
+                    喜歡跟著音樂舞動，
+                    享受節奏與舞蹈的樂趣。
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- 學校介紹 -->
+
+    <section id="school">
+
+        <div class="section-title">
+            <h2>就讀學校 My School</h2>
+            <p>MY UNIVERSITY & DEPARTMENT</p>
+        </div>
+
+        <div class="school-box">
+
+            <h3>台南應用科技大學</h3>
+
+            <p>
+                台南應用科技大學位於台南市，
+                是一所以藝術、設計及應用領域為特色的學校。
+                提供多元的學習環境，讓學生能夠發揮創意，
+                並培養不同領域的專業能力。
+            </p>
+
+        </div>
+
+        <div class="school-box">
+
+            <h3>多媒體動畫系</h3>
+
+            <p>
+                我目前就讀於多媒體動畫系三年級。
+                科系結合藝術設計與數位科技，
+                學習動畫製作、角色設計、3D 建模、
+                影像處理及多媒體創作等相關內容。
+
+                透過不同的課程與專題製作，
+                累積創作經驗並培養自己的設計能力。
+            </p>
+
+            <div class="tags">
+                <span class="tag">2D 動畫</span>
+                <span class="tag">3D 建模</span>
+                <span class="tag">角色設計</span>
+                <span class="tag">影像剪輯</span>
+                <span class="tag">數位繪圖</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- 聯絡資訊 -->
+
+    <section id="contact">
+
+        <div class="section-title">
+            <h2>與我聯絡 Contact Me</h2>
+            <p>LET'S KEEP IN TOUCH</p>
+        </div>
+
+        <div class="contact-box">
+
+            <h3>Thank You For Visiting!</h3>
+
+            <p>感謝你來認識我，希望未來有機會與你交流！</p>
+
+            <p>✉ Email：d13370707@gm.tut.edu.tw</p>
+
+            <p>📷 Instagram：peiyu661</p>
+
+            <p>♡ Name：Pei</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- 頁尾 -->
+
+    <footer>
+        © 2026 Pei. All Rights Reserved.
+    </footer>
+
+</body>
+
+</html>
